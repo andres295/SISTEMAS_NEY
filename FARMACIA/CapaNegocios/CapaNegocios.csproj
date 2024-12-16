@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C07ACA06-2D0E-475C-9A20-3D043A27EDF9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CapaNegocios</RootNamespace>
+    <AssemblyName>CapaNegocios</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NAdministracion.cs" />
+    <Compile Include="NCaja.cs" />
+    <Compile Include="NBuzonPedido.cs" />
+    <Compile Include="NCargoTransferencia.cs" />
+    <Compile Include="NFactura.cs" />
+    <Compile Include="NPagoCxC.cs" />
+    <Compile Include="NTipoIdentificacion.cs" />
+    <Compile Include="NComposicionQuimica.cs" />
+    <Compile Include="NConexion.cs" />
+    <Compile Include="NBancos.cs" />
+    <Compile Include="NCotizaciones.cs" />
+    <Compile Include="NDescargoTransferencia.cs" />
+    <Compile Include="NDescargoAjuste.cs" />
+    <Compile Include="NCargoAjuste.cs" />
+    <Compile Include="NCargoCompra.cs" />
+    <Compile Include="NClientes.cs" />
+    <Compile Include="NCuentasPorPagar.cs" />
+    <Compile Include="NDescuentos.cs" />
+    <Compile Include="NEmpleados.cs" />
+    <Compile Include="NEspecificacion.cs" />
+    <Compile Include="NIVA.cs" />
+    <Compile Include="NModulo.cs" />
+    <Compile Include="NNotasCreditos.cs" />
+    <Compile Include="NAjusteTecla.cs" />
+    <Compile Include="NComprobantesSRI.cs" />
+    <Compile Include="NParametrosSRI.cs" />
+    <Compile Include="NPermiso.cs" />
+    <Compile Include="NParametros.cs" />
+    <Compile Include="NPresentaciones.cs" />
+    <Compile Include="NProductos.cs" />
+    <Compile Include="NProveedores.cs" />
+    <Compile Include="NRecuperar.cs" />
+    <Compile Include="NStock.cs" />
+    <Compile Include="NCatalogosGenerales.cs" />
+    <Compile Include="NSriRetenciones.cs" />
+    <Compile Include="NTipoPago.cs" />
+    <Compile Include="NUsuarios.cs" />
+    <Compile Include="NVencimiento.cs" />
+    <Compile Include="NVentas.cs" />
+    <Compile Include="NVentas_Dia.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
+      <Project>{271b4ed9-c184-45fa-a998-c7c2e78389a2}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
