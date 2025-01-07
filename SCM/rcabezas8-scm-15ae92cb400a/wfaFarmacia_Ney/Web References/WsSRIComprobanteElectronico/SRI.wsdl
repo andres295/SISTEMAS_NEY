@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="RecepcionComprobante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ambiente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numeroAcceso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecepcionComprobanteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RespuestaAutorizacionComprobante" nillable="true" type="tns:CRespuestaAutorizacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CRespuestaAutorizacion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="claveAccesoConsultada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="numeroComprobantes" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="autorizaciones" type="tns:ArrayOfAutorizacion" />
+          <s:element minOccurs="0" maxOccurs="1" name="MensajeError" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Error" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAutorizacion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="autorizacion" nillable="true" type="tns:Autorizacion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Autorizacion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="numeroAutorizacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fechaAutorizacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ambiente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="comprobante" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="comprobanteRetencion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mensajes" type="tns:ArrayOfMensajes" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMensajes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="mensaje" nillable="true" type="tns:Mensajes" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Mensajes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="identificador" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mensaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="informacionAdicional" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AutorizacionComprobanteFactura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InfokeyAcces" type="tns:InfoClaveAcceso" />
+            <s:element minOccurs="0" maxOccurs="1" name="infoTribu" type="tns:infoTributaria" />
+            <s:element minOccurs="0" maxOccurs="1" name="infoFac" type="tns:infoFactura" />
+            <s:element minOccurs="0" maxOccurs="1" name="tImpuesto" type="tns:ArrayOfTotalImpuesto" />
+            <s:element minOccurs="0" maxOccurs="1" name="tPagos" type="tns:ArrayOfPagos" />
+            <s:element minOccurs="0" maxOccurs="1" name="tItemPorProducto" type="tns:ArrayOfItemPorProducto" />
+            <s:element minOccurs="0" maxOccurs="1" name="tDetalleImpuestosItem" type="tns:ArrayOfDetalleImpuestosItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InfoClaveAcceso">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FechaEmision" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoComprobante" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumRuc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoAmbiente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Serie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroComprobante" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodNumerico" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoEmision" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="infoTributaria">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="razonSocial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombreComercial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estab" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ptoEmi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dirMatriz" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="infoFactura">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="dirEstablecimiento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="obligadoContabilidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipoIdentificacionComprador" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="guiaRemision" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="razonSocialComprador" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="identificacionComprador" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="direccionComprador" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="totalSinImpuestos" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="totalDescuento" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="propina" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="importeTotal" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="moneda" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="valorRetIva" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="valorRetRenta" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTotalImpuesto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="totalImpuesto" nillable="true" type="tns:totalImpuesto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="totalImpuesto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="codigo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigoPorcentaje" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="baseImponible" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="descuentoAdicional" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="valor" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPagos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Pagos" nillable="true" type="tns:Pagos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Pagos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="formaPago" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="total" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="plazo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="unidadTiempo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfItemPorProducto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemPorProducto" nillable="true" type="tns:ItemPorProducto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ItemPorProducto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="codigoPrincipal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigoAuxiliar" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="cantidad" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="precioUnitario" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="descuento" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="precioTotalSinImpuesto" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="DetItemAdicional" type="tns:ArrayOfItemPorProductoDetallesAdicionales" />
+          <s:element minOccurs="0" maxOccurs="1" name="DetItemImpuestos" type="tns:ArrayOfDetalleImpuestosItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfItemPorProductoDetallesAdicionales">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemPorProductoDetallesAdicionales" nillable="true" type="tns:ItemPorProductoDetallesAdicionales" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ItemPorProductoDetallesAdicionales">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Valor" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDetalleImpuestosItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DetalleImpuestosItem" nillable="true" type="tns:DetalleImpuestosItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DetalleImpuestosItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="codigo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigoPorcentaje" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="tarifa" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="baseImponible" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="valor" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AutorizacionComprobanteFacturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RespuestaRecepcionComprobante" nillable="true" type="tns:CRespuestaRecepcion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CRespuestaRecepcion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="comprobantes" type="tns:ArrayOfComprobante" />
+          <s:element minOccurs="0" maxOccurs="1" name="MensajeErrorInterno" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorInterno" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClaveAcceso" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfComprobante">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="comprobante" nillable="true" type="tns:Comprobante" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Comprobante">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="claveAcceso" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mensajes" type="tns:ArrayOfMensaje" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMensaje">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="mensaje" nillable="true" type="tns:Mensaje" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Mensaje">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="identificador" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mensaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="informacionAdicional" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AutorizacionComprobanteRetencion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InfokeyAcces" type="tns:InfoClaveAcceso" />
+            <s:element minOccurs="0" maxOccurs="1" name="infoTribu" type="tns:infoTributaria" />
+            <s:element minOccurs="0" maxOccurs="1" name="infoCompRetencion" type="tns:infoCompRetencion" />
+            <s:element minOccurs="0" maxOccurs="1" name="tDetalleImpuestosItem" type="tns:ArrayOfDetalleImpuestosRetencion" />
+            <s:element minOccurs="0" maxOccurs="1" name="tDetalleInfoAdicional" type="tns:ArrayOfDetalleInfoAdicional" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="infoCompRetencion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="dirEstablecimiento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="obligadoContabilidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipoIdentificacionSujetoRetenido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="razonSocialSujetoRetenido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="identificacionSujetoRetenido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="periodoFiscal" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDetalleImpuestosRetencion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DetalleImpuestosRetencion" nillable="true" type="tns:DetalleImpuestosRetencion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DetalleImpuestosRetencion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="codigo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigoRetencion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="baseImponible" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="porcentajeRetener" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="valorRetenido" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="codDocSustento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="numDocSustento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fechaEmisionDocSustento" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDetalleInfoAdicional">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DetalleInfoAdicional" nillable="true" type="tns:DetalleInfoAdicional" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DetalleInfoAdicional">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Valor" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AutorizacionComprobanteRetencionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RespuestaRecepcionComprobante" nillable="true" type="tns:CRespuestaRecepcion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RecepcionComprobanteSoapIn">
+    <wsdl:part name="parameters" element="tns:RecepcionComprobante" />
+  </wsdl:message>
+  <wsdl:message name="RecepcionComprobanteSoapOut">
+    <wsdl:part name="parameters" element="tns:RecepcionComprobanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="AutorizacionComprobanteFacturaSoapIn">
+    <wsdl:part name="parameters" element="tns:AutorizacionComprobanteFactura" />
+  </wsdl:message>
+  <wsdl:message name="AutorizacionComprobanteFacturaSoapOut">
+    <wsdl:part name="parameters" element="tns:AutorizacionComprobanteFacturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="AutorizacionComprobanteRetencionSoapIn">
+    <wsdl:part name="parameters" element="tns:AutorizacionComprobanteRetencion" />
+  </wsdl:message>
+  <wsdl:message name="AutorizacionComprobanteRetencionSoapOut">
+    <wsdl:part name="parameters" element="tns:AutorizacionComprobanteRetencionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SRISoap">
+    <wsdl:operation name="RecepcionComprobante">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Método para verificar el status del comprobante si fue o no Autorizado.</wsdl:documentation>
+      <wsdl:input message="tns:RecepcionComprobanteSoapIn" />
+      <wsdl:output message="tns:RecepcionComprobanteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AutorizacionComprobanteFactura">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Método para subir al SRI un comprobante.</wsdl:documentation>
+      <wsdl:input message="tns:AutorizacionComprobanteFacturaSoapIn" />
+      <wsdl:output message="tns:AutorizacionComprobanteFacturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AutorizacionComprobanteRetencion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Método para subir al SRI un comprobante de retención.</wsdl:documentation>
+      <wsdl:input message="tns:AutorizacionComprobanteRetencionSoapIn" />
+      <wsdl:output message="tns:AutorizacionComprobanteRetencionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SRISoap" type="tns:SRISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RecepcionComprobante">
+      <soap:operation soapAction="http://tempuri.org/RecepcionComprobante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutorizacionComprobanteFactura">
+      <soap:operation soapAction="http://tempuri.org/AutorizacionComprobanteFactura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutorizacionComprobanteRetencion">
+      <soap:operation soapAction="http://tempuri.org/AutorizacionComprobanteRetencion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SRISoap12" type="tns:SRISoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RecepcionComprobante">
+      <soap12:operation soapAction="http://tempuri.org/RecepcionComprobante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutorizacionComprobanteFactura">
+      <soap12:operation soapAction="http://tempuri.org/AutorizacionComprobanteFactura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutorizacionComprobanteRetencion">
+      <soap12:operation soapAction="http://tempuri.org/AutorizacionComprobanteRetencion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SRI">
+    <wsdl:port name="SRISoap" binding="tns:SRISoap">
+      <soap:address location="http://192.168.1.162/wsSRI/Services/SRI.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SRISoap12" binding="tns:SRISoap12">
+      <soap12:address location="http://192.168.1.162/wsSRI/Services/SRI.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
